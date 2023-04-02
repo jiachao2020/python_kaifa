@@ -18,10 +18,10 @@ from pyspark.sql.functions import monotonically_increasing_id
 from pyspark.sql import Row
 
 SparkSession  = SparkSession.builder.config("spark.local.dir").appName('all_phone').master("local[*]").config("spark.sql.shuffle.partitions", "30").enableHiveSupport().getOrCreate()
-conf=SparkSession.sparkContext._conf.setAll([('spark.executor.memory', '4g'),
+conf=SparkSession.sparkContext._conf.setAll([('spark.executor.memory', '8g'),
 ('spark.app.name', 'Spark Updated Conf'),
-('spark.driver.cores', '4'), ('spark.executor.cores', '16'),
-('spark.driver.memory','90g')])
+('spark.driver.cores', '1'), ('spark.executor.cores', '15'),
+('spark.driver.memory','2g')])
 #lines=SparkSession.read.csv(r"E:\220914\steak\age-0307.txt")
 #lines.toDF("phonemd5",'age').createOrReplaceTempView('xjh_age_0307')
 #SparkSession.sql('''create table age.xjh_age_0307 as select phonemd5,age from xjh_age_0307''')
