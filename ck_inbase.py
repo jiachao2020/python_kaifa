@@ -29,6 +29,6 @@ conf=SparkSession.sparkContext._conf.setAll([('spark.executor.memory', '4g'),
 #.此方法可以对列更名
 SparkSession.sql("set hive.exec.dynamic.partition=true")
 SparkSession.sql("set hive.exec.dynamic.partition.mode=nonstrict")
-SparkSession.sql('''insert overwrite table chaojia.CK_PRODUCT_MONTH_WAY
+SparkSession.sql('''insert overwrite table chaojia.CK_PRODUCT_MONTH_WAY_phone
 partition(PRODUCT,month,way)
-select b.phone,a.PRODUCT,a.month,a.way from default.CK_PRODUCT_MONTH_WAY a left join chaojia.all_phone b on a.phonemd5=b.phonemd5 where b.phone is not null''')
+select b.phone,a.PRODUCT,a.month,a.way from chaojia.CK_PRODUCT_MONTH_WAY_1 a left join chaojia.all_phone b on a.phonemd5=b.phonemd5 where b.phone is not null and a.product rlike 'ZAXD' ''')
